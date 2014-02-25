@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Fishbit</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="description" content="Fishbit is the most intuitive connected aquarium. Keep your finger on the pulse and your fish and corals safe.">
+    <meta name="keywords" content="fishbit, fish, aquarium, monitor, measure, fish tank, salinity, ph, temperature, water levels">
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/fonts.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="font-awesome-4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,300' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/modernizr-latest.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/tweenmax.min.js"></script>
+    <script type="text/javascript" src="js/jquery.superscrollorama.js"></script>
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>    
+
+  </head>
+
+  <body id="fishbit-com" class="home">
+	
+    <div id="viewport-wrapper">
+      <div></div>
+      <div id="nav" class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+          <div id="branding" class="pull-left"><a href="/" title="Real world control of your fish tank">Fishbit</a></div>
+          </div>
+        </div>
+      </div> <!-- .navbar -->
+
+      <div id="hero" class="row-fluid">
+        <div id="locations">
+          <div class="container">
+            <div class="span7 content">
+              <h1>Introducing the truly connected aquarium.</h1>
+              <p>Simply drop FishBit into your tank.  Wireless, real-time insights and alerts give you peace of mind for your balanced ecosystem. </p>
+
+
+              <!-- survey -->
+              <a href="#?custom=true&width=760&height=500" class="btn btn-primary event-preorder" rel="prettyPhoto">Give us feedback!</a>
+
+              <script type="text/javascript" charset="utf-8">
+              $(document).ready(function(){     
+                $("a[rel^='prettyPhoto']").prettyPhoto({
+                  custom_markup: '<iframe src="https://docs.google.com/forms/d/1Hezprp1Wf5L3UpxaWOCdSA3HQDLGaWwJbmL65Lr__E4/viewform?embedded=true" width="760" height="348" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>',
+                  changepicturecallback: function(){ initialize(); }
+                });
+              });
+              </script>
+
+                <a href="#?custom=true&width=760&height=500" class="btn btn-primary event-preorder" rel="prettyPhoto">Email Us</a>
+
+              <script type="text/javascript" charset="utf-8">
+              $(document).ready(function(){     
+                $("a[rel^='prettyPhoto']").prettyPhoto({
+                  custom_markup: '<iframe src="http://ker-twang.us3.list-manage.com/subscribe/post?u=be80209a6a0ebcfe51ad2b76f&amp;id=b4fac59a69" width="760" height="860" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>',
+                  changepicturecallback: function(){ initialize(); }
+                });
+              });
+              </script>
+
+              <div id="video">
+                <a href="http://vimeo.com/86266526" id="yt-link" title="" class="event-video" rel="prettyPhoto"><img src="images/video.jpg" alt="" class="video" style="width:80px" /></a>
+              </div>
+            </div>
+            <div id="location-apps">
+              <div class="hand hand1 active"><img src="images/screen3.png" alt="" /></div>
+       
+            </div>
+          </div>
+
+        </div>
+      </div> <!-- #hero -->
+
+      <div id="footer" class="row-fluid"> 
+
+      <div id="legal" class="row-fluid">
+        <div class="container">
+          <div class="span12">
+            <p align="center">Copyright 2014&nbsp;&nbsp;|&nbsp;&nbsp;Built with <i class="fa fa-heart"></i> in Chicago&nbsp;&nbsp;|&nbsp;&nbsp;<a href="mailto:info@getfishbit.com" style="color: #fff;"><b>info@getfishbit.com</b></a></p>
+        </div>
+      </div> 
+
+    </div> 
+
+    <script type="text/javascript">
+      $(function() {
+
+        mixpanel.track("website loaded", { page: $('body').attr('class') });
+
+        $('#nav .event-preorder').click(function() { mixpanel.track("preorder link clicked", { ref: "nav" }) });
+        $('#hero .event-preorder').click(function() { mixpanel.track("preorder link clicked", { ref: "top" }) });
+        $('#social .event-preorder').click(function() { mixpanel.track("preorder link clicked", { ref: "bottom" }) });
+        $('#video .event-video').click(function() { mixpanel.track("video link clicked") });
+        $('#faq h4').click(function() { mixpanel.track("faq link clicked", { question: $(this).text() }) });
+
+        $('a[href="#preorder"]').click(function() {
+          var animationOffset =  $('body').scrollTop() >= $('#example').offset().top || $('#example > .container').hasClass('static') ? 0 : 2000;
+          var base = $('#checkout-placeholder').is(':visible') ? $('#checkout-placeholder').offset().top : $('#preorder').offset().top;
+          //$(document).animate({ scrollTop:base + animationOffset }); /*{ duration: 100 }*/
+          $(document).scrollTop(base + animationOffset); /*{ duration: 100 }*/
+          return false;
+        });
+
+        $('#go-checkout').click(function () {
+          mixpanel.track("checkout process (start)");
+          __insp.push(['tagSession', "checkout process started"]);
+        });
+
+        mixpanel.track_links(".contact-link","contact link clicked");
+        mixpanel.track_links(".retail-link","retail link clicked");
+
+        $("a#yt-link").prettyPhoto({ theme: "facebook", social_tools: false });
+
+        $('#faq ul p').hide();
+        $('#faq h3.beacon + ul > li:lt(2) p, #faq h3.sdk + ul > li:lt(1) p, #faq h3.platform + ul > li:lt(4) p').show();
+        $('#faq h4').click(function(e) { $(this).next('p').toggle() });
+
+        // var carousel = $('#locations').carousel({ pause: false, interval: 5000 }).on('slid', function(e) {
+        //   var $active = $('#hero div.hand.active');
+        //   var $next = $active.next('div.hand').is('div') ? $active.next('div.hand') : $('#hero').find('div.hand:first-child');
+        //   if ($next.is('div.hand1')) { $('#location-apps').addClass('loop') }
+        //   $next.find('img').fadeIn('slow', function(e) {
+        //     $active.removeClass('active');
+        //     $active.find('img').hide();
+        //     $(this).parent().addClass('active');
+        //     $('#location-apps').removeClass('loop');
+        //   });
+        // });
+
+
+//         if (!Modernizr.touch) {
+//         var howItWorks = $.superscrollorama({playoutAnimations: false});
+
+//         howItWorks.pin($('#example'), 2000, {
+//             anim: (new TimelineLite())
+
+
+//                     .append([
+//                       TweenMax.to($('.shopper'), .1, { css: { left: '73px' } }),
+//                       TweenMax.to($('.shopper'), .1, { css: { top: '241px' } }),
+          
+//                     ]) 
+//       // Pause next to jeans and display the navy bubble
+//                     .append([
+//                       TweenMax.to($('.shopper'), .05, { css: { left: '73px' } }),
+//                       TweenMax.to($('.shopper'), .05, { css: { top: '241px' } }),
+//               TweenMax.to($('.violet'), .009, { css: { opacity:1 } }),  
+//               TweenMax.to($('.story1'), .005, { css: { opacity:0 } }),    
+//               TweenMax.to($('.story2'), .009, { css: { opacity:1 } }),    
+//                     ])
+
+
+// // Hide the bubble and enter the store
+//               .append([
+//         TweenMax.to($('.violet'), .009, { css: { opacity:0 } }),    
+//                 TweenMax.to($('.shopper'), .1, { css: { left: '188px' } }),
+//                 TweenMax.to($('.shopper'), .1, { css: { top: '433px' } }),
+//               ]) 
+// // Pause next to jeans and display the navy bubble
+//               .append([
+//                 TweenMax.to($('.shopper'), .05, { css: { left: '188px' } }),
+//                 TweenMax.to($('.shopper'), .05, { css: { top: '433px' } }),
+//         TweenMax.to($('.navy'), .009, { css: { opacity:1 } }),   
+//         TweenMax.to($('.story2'), .005, { css: { opacity:0 } }),    
+//         TweenMax.to($('.story3'), .009, { css: { opacity:1 } }),    
+//         TweenMax.to($('.jeans'), .009, { css: { opacity:1 } }),
+//               ]) 
+
+// // Hide the bubble and navigate to shirts
+//       .append([
+//         TweenMax.to($('.navy'), .009, { css: { opacity:0 } }),    
+//                 TweenMax.to($('.shopper'), .1, { css: { left: '383px' } }),
+//                 TweenMax.to($('.shopper'), .1, { css: { top: '349px' } }),
+//                 TweenMax.to($('.jeans'), .009, { css: { opacity:0 } }),
+//               ]) 
+
+// // Pause next to shirts and display the yellow bubble
+//         .append([
+//                   TweenMax.to($('.shopper'), .05, { css: { left: '383px' } }),
+//                   TweenMax.to($('.shopper'), .05, { css: { top: '349px' } }),
+//           TweenMax.to($('.yellow'), .009, { css: { opacity:1 } }), 
+//           TweenMax.to($('.story3'), .005, { css: { opacity:0 } }),    
+//           TweenMax.to($('.story4'), .009, { css: { opacity:1 } }),    
+//           TweenMax.to($('.shirt'), .009, { css: { opacity:1 } }),
+//                 ])
+      
+// // Hide the bubble and leave the store
+//       .append([
+//         TweenMax.to($('.yellow'), .009, { css: { opacity:0 } }),    
+//                 TweenMax.to($('.shopper'), .1, { css: { left: '489px' } }),
+//                 TweenMax.to($('.shopper'), .1, { css: { top: '430px' } }),
+//                 TweenMax.to($('.shirt'), .009, { css: { opacity:0 } }),
+//               ])
+
+// // Pause next to exit and display the blue bubble
+//       .append([
+//          TweenMax.to($('.shopper'), .05, { css: { left: '489px' } }),
+//          TweenMax.to($('.shopper'), .05, { css: { top: '430px' } }),
+//         TweenMax.to($('.blue'), .009, { css: { opacity:1 } }),  
+//         TweenMax.to($('.story4'), .005, { css: { opacity:0 } }),    
+//         TweenMax.to($('.story5'), .009, { css: { opacity:1 } }),    
+          
+//       ])
+      
+// // Hide the bubble and walk away
+//       .append([
+//           TweenMax.to($('.blue'), .009, { css: { opacity:0 } }),    
+//               TweenMax.to($('.shopper'), .1, { css: { left: '590px' } }),
+//               TweenMax.to($('.shopper'), .1, { css: { top: '520px' } }),
+//               ])                      
+//           });
+//           } else {
+//             $('#static-example').show();
+//             $('#example').css('height', '760px');
+//             $('#example .narrative, #example .shopper, #example .bubble').hide();
+//             $('#example > .container, #example .venue').addClass('static');
+//           }
+
+//       })
+//     </script>
+
+
+  </body>
+</html>
